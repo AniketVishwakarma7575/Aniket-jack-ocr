@@ -28,9 +28,13 @@ class AIProcessor:
             
             # Form ke columns ke hisaab se specific prompt
             prompt = """
-            This is a Measurement Form. Extract the tabular data into a JSON array.
-            The JSON must have these keys: description, no, length, breadth, height, quantity.
-            Return ONLY the raw JSON array. Do not include markdown code blocks.
+            Analyze this image and identify the table. 
+            1. Detect all column headers present in the table.
+            2. Extract all rows into a JSON array of objects.
+            3. Use the detected headers as keys for the JSON objects.
+            4. If a cell is empty, use "".
+            
+            Return ONLY the raw JSON array. No markdown, no conversational text.
             """
 
             # Correct method for this library
